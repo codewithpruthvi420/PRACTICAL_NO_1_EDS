@@ -1,0 +1,57 @@
+# write your code here
+def calculate_grade():
+    try:
+        # Read the number of courses
+        n_str = input()
+        if not n_str:
+            return
+        n = int(n_str)
+        
+        # Read the marks as a single line of space-separated integers
+        marks_input = input()
+        if not marks_input:
+            return
+        marks = list(map(int, marks_input.split()))
+        
+        # Check if the number of marks matches n
+        if len(marks) != n:
+            # Handle cases where input might be on one line or different
+            if len(marks) == 0:
+                # Try reading marks from the first input line if it contained them (e.g., Test Case 1 in the image)
+                marks = list(map(int, n_str.split()))
+                if len(marks) != n:
+                    return # Invalid input
+            else:
+                return # Invalid input
+
+        # Check for failure condition (marks < 40 in any course)
+        for mark in marks:
+            if mark < 40:
+                print("Fail")
+                return
+
+        # Calculate aggregate percentage
+        aggregate_percentage = sum(marks) / n
+
+        # Determine the grade
+        if aggregate_percentage > 75:
+            grade = "Distinction"
+        elif aggregate_percentage >= 60 and aggregate_percentage < 75:
+            grade = "First Division"
+        elif aggregate_percentage >= 50 and aggregate_percentage < 60:
+            grade = "Second Division"
+        elif aggregate_percentage >= 40 and aggregate_percentage < 50:
+            grade = "Third Division"
+        else:
+            # This case should not be reached if all marks >= 40, but good practice
+            grade = "Pass" 
+
+        # Print the results
+        print(f"Aggregate Percentage: {aggregate_percentage:.2f}")
+        print(f"Grade: {grade}")
+
+    except ValueError:
+        # Handle potential input errors
+        pass
+
+calculate_grade()
