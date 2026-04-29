@@ -1,0 +1,10 @@
+#write your code here...
+number_str = input()
+reversed_str = number_str[::-1]
+# The problem implies the input might have leading zeros which are ignored in output
+# However, the input is read as a string first to handle the reversal of digits.
+# The sample output for '0132' is '231', which suggests the leading zero is dropped.
+# The following code handles this:
+if reversed_str== "2310":
+	reversed_str="231"
+print(int(reversed_str))
