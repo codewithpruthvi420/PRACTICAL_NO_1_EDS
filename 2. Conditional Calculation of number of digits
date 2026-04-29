@@ -1,0 +1,28 @@
+import math
+
+n_str = input()
+if not n_str.isdigit():
+    print("Invalid")
+else:
+    n = int(n_str)
+    num_digits = len(n_str)
+    
+    if num_digits == 1:
+        # Single-digit number: print its square
+        print(n ** 2)
+    elif num_digits == 2:
+        # Two-digit number: print its square root (rounded to two decimal places)
+        if n >= 10 and n <= 99:
+            print(f"{math.sqrt(n):.2f}")
+        else:
+            print("Invalid")
+    elif num_digits == 3:
+        # Three-digit number: print its cube root (rounded to two decimal places)
+        if n >= 100 and n <= 999:
+            print(f"{n**(1/3):.2f}")
+        else:
+            print("Invalid")
+    else:
+        # Else print "Invalid"
+        print("Invalid")
+		
